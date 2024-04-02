@@ -8,13 +8,14 @@ CREATE TABLE Cliente (
     Telefono NVARCHAR(20),
     Direccion NVARCHAR(100)
 );
+DROP TABLE IF EXISTS Pedido;
 
 CREATE TABLE Pedido (
-    IDPedido INT PRIMARY KEY,
+    IDPedido INT IDENTITY(1,1) PRIMARY KEY,
     IDCliente INT,
     Fecha DATETIME,
     Total MONEY,
-    Estado NVARCHAR(50),
+    Estado NVARCHAR(50)
     FOREIGN KEY (IDCliente) REFERENCES Cliente(IDCliente)
 );
 
@@ -38,22 +39,25 @@ VALUES
 (14, 'Javier', 'Ruiz', 'javier@example.com', '456123789', 'Boulevard Sur 1234'),
 (15, 'Carmen', 'Torres', 'carmen@example.com', '789456123', 'Paseo de la Playa 5678');
 
-INSERT INTO Pedido (IDPedido, IDCliente, Fecha, Total, Estado)
-VALUES 
-(1, 1, '2024-04-01T08:00:00', 150.50, 'pendiente'),
-(2, 2, '2024-04-02T10:30:00', 200.75, 'en proceso'),
-(3, 3, '2024-04-03T12:15:00', 300.25, 'completado'),
-(4, 4, '2024-04-04T14:45:00', 80.00, 'completado'),
-(5, 5, '2024-04-05T16:20:00', 150.00, 'en proceso'),
-(6, 6, '2024-04-06T18:45:00', 200.00, 'pendiente'),
-(7, 7, '2024-04-07T20:10:00', 180.67, 'completado'),
-(8, 8, '2024-04-08T22:30:00', 90.31, 'en proceso'),
-(9, 9, '2024-04-09T09:45:00', 60.67, 'completado'),
-(10, 10, '2024-04-10T11:20:00', 500.00, 'pendiente'),
-(11, 11, '2024-04-11T13:30:00', 100.34, 'pendiente'),
-(12, 12, '2024-04-12T15:40:00', 320.45, 'completado'),
-(13, 13, '2024-04-13T17:00:00', 40.04, 'pendiente'),
-(14, 14, '2024-04-14T19:20:00', 70.67, 'completado'),
-(15, 15, '2024-04-15T21:45:00', 200.05, 'en proceso');
+select * from Cliente
 
-select * from Pedido
+INSERT INTO Pedido (IDCliente, Fecha, Total, Estado)
+VALUES 
+(1, '2024-04-01T08:00:00', 150.50, 'pendiente'),
+(2, '2024-04-02T10:30:00', 200.75, 'en proceso'),
+(3, '2024-04-03T12:15:00', 300.25, 'completado'),
+(4, '2024-04-04T14:45:00', 80.00, 'completado'),
+(5, '2024-04-05T16:20:00', 150.00, 'en proceso'),
+(6, '2024-04-06T18:45:00', 200.00, 'pendiente'),
+(7, '2024-04-07T20:10:00', 180.67, 'completado'),
+(8, '2024-04-08T22:30:00', 90.31, 'en proceso'),
+(9, '2024-04-09T09:45:00', 60.67, 'completado'),
+(10, '2024-04-10T11:20:00', 500.00, 'pendiente'),
+(11, '2024-04-11T13:30:00', 100.34, 'pendiente'),
+(12, '2024-04-12T15:40:00', 320.45, 'completado'),
+(13, '2024-04-13T17:00:00', 40.04, 'pendiente'),
+(14, '2024-04-14T19:20:00', 70.67, 'completado'),
+(15, '2024-04-15T21:45:00', 200.05, 'en proceso');
+insert into Pedido values (3, '2024-04-15T21:45:00', 265.05, 'en proceso');
+
+	select * from Pedido
