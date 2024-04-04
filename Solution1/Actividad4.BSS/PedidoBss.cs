@@ -21,5 +21,17 @@ namespace Actividad4.BSS
         {
             dal.InsertarPedidoDal(pedido);
         }
+        public void EditarPedidoBss(Pedido p)
+        {
+            dal.EditarPedidoDal(p);
+        }
+        public Pedido ObtenerPedidoIdBss(int id) 
+        {
+            return dal.ObtenerPedidoId(id);
+        }
+        public void EliminarPedidoBss(int id)
+        {
+            dal.EliminarPedidoDal(id);
+        }
     }
 }

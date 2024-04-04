@@ -40,6 +40,15 @@ namespace Actividad4.VISTA.PedidoVista
             p.Total = Convert.ToInt32(textBox1.Text);
             pbss.InsertarPedidoBss(p);
             MessageBox.Show("Se guardo correctamente");
+            //this.Close();
+            //ListarPedidoVista fr = new ListarPedidoVista();
+            //fr.Show();
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

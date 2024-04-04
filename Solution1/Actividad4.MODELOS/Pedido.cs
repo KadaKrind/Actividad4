@@ -8,6 +8,7 @@ namespace Actividad4.MODELOS
 {
     public class Pedido
     {
+        public int IDPedidos { get; set; }  
         public int IdPedido {  get; set; }
         public DateTime Fecha { get; set; }
         public int Total {  get; set; }

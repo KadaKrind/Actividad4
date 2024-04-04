@@ -27,6 +27,7 @@ namespace Actividad4.VISTA.PedidoVista
         {
             int IdPedidoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             EditarPedidoVista fr = new EditarPedidoVista(IdPedidoSeleccionado);
+            //this.Close();
             if (fr.ShowDialog() == DialogResult.OK)
             {
                 dataGridView1.DataSource = bss.ListarPedidoBss();
@@ -36,10 +37,24 @@ namespace Actividad4.VISTA.PedidoVista
         private void button1_Click(object sender, EventArgs e)
         {
             AgregarPedidoVista fr = new AgregarPedidoVista();
+            
             if (fr.ShowDialog() == DialogResult.OK)
             {
                 dataGridView1.DataSource = bss.ListarPedidoBss();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int idPedidoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            DialogResult result = MessageBox.Show("Esta Seguro de eliminar este pedido", "Eliminado", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                bss.EliminarPedidoBss(idPedidoSeleccionado);
+                dataGridView1.DataSource= bss.ListarPedidoBss();
+            }
+           
+            
         }
     }
 }
